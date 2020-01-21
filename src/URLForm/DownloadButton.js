@@ -1,11 +1,18 @@
 import React from 'react';
 
+import {
+  Button,
+} from 'react-bootstrap';
+
 class DownloadButton extends React.Component {
   render() {
     return (
-      <button onClick={this.props.onClick}>
+      <Button
+        variant='primary'
+        onClick={this.props.onClick}
+      >
         Download
-      </button>
+      </Button>
     );
   }
 }
