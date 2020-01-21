@@ -3,7 +3,8 @@ import React from 'react';
 import NavBar from './NavBar';
 import URLForm from './URLForm/';
 
-import './App.css';
+// import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

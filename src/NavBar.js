@@ -1,10 +1,18 @@
 import React from 'react';
+import {
+  Navbar,
+  Container,
+} from 'react-bootstrap';
 
 function NavBar() {
   return (
-    <div>
-      <h1>SoundCloud Likes Download | This Is The Navbar</h1>
-    </div>
+    <Navbar bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand>
+          SoundCloud Likes Download
+        </Navbar.Brand>
+      </Container>
+    </Navbar>
   );
 }
 
