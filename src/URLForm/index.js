@@ -35,7 +35,7 @@ class URLForm extends React.Component {
     return (
       <Container>
         <Row>
-          <Col xs="6">
+          <Col md="6" className="mx-auto">
             <URLTextBox
               text={this.state.text}
               onKeyPress={this.handleKeyPress}
