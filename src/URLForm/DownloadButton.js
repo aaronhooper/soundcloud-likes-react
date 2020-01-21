@@ -1,11 +1,13 @@
 import React from 'react';
 
-function DownloadButton() {
-  return (
-    <button>
-      Download
-    </button>
-  );
+class DownloadButton extends React.Component {
+  render() {
+    return (
+      <button onClick={this.props.onClick}>
+        Download
+      </button>
+    );
+  }
 }
 
 export default DownloadButton;
