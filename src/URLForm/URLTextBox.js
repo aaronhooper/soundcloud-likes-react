@@ -10,6 +10,7 @@ class URLTextBox extends React.Component {
     return (
       <FormControl
         placeholder="Enter url here"
+        className='mt-5 mb-4'
         value={this.props.text}
         onChange={this.props.onChange}
         onKeyPress={this.props.onKeyPress}
