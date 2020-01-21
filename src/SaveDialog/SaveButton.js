@@ -1,9 +1,15 @@
 import React from 'react';
 
+import {
+  Button,
+} from 'react-bootstrap';
+
 function SaveButton() {
   return (
     <div>
-      <h2>This is the save button component</h2>
+      <Button variant="primary">
+        Save Changes
+      </Button>
     </div>
   );
 }
