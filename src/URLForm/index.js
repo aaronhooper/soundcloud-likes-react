@@ -1,5 +1,11 @@
 import React from 'react';
 
+import {
+  Container,
+  Row,
+  Col,
+} from 'react-bootstrap';
+
 import URLTextBox from './URLTextBox';
 import DownloadButton from './DownloadButton';
 
@@ -27,17 +33,18 @@ class URLForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>This Is URLForm component</h2>
-        <URLTextBox
-          text={this.state.text}
-          onKeyPress={this.handleKeyPress}
-          onChange={this.handleChange}
-        />
-        <DownloadButton
-          onClick={this.handleClick}
-        />
-      </div>
+      <Container>
+        <Row>
+          <Col xs="6">
+            <URLTextBox
+              text={this.state.text}
+              onKeyPress={this.handleKeyPress}
+              onChange={this.handleChange} />
+            <DownloadButton
+              onClick={this.handleClick} />
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
