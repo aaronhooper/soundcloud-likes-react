@@ -17,6 +17,7 @@ class App extends React.Component {
     this.state = {
       text: "",
       data: null,
+      showSaveDialog: false,
     };
   }
 
@@ -30,7 +31,19 @@ class App extends React.Component {
 
   async getDataAndShowModal() {
     await this.getData();
-    fileDownload(JSON.stringify(this.state.data), 'likes.json');
+    this.showModal();
+  }
+
+  hideModal = () => {
+    this.setState({
+      showSaveDialog: false,
+    });
+  }
+
+  showModal = () => {
+    this.setState({
+      showSaveDialog: true,
+    });
   }
 
   handleKeyPress = e => {
@@ -45,8 +58,10 @@ class App extends React.Component {
 
   handleClick = e => {
     return this.getDataAndShowModal();
-    // download button should trigger:
-    // fileDownload(JSON.stringify(this.state.data), 'likes.json');
+  }
+
+  offerDownload = e => {
+    fileDownload(JSON.stringify(this.state.data), 'likes.json');
   }
 
   render() {
@@ -58,7 +73,10 @@ class App extends React.Component {
           onKeyPress={this.handleKeyPress}
           onChange={this.handleChange}
           onButtonClick={this.handleClick} />
-        <SaveDialog />
+        <SaveDialog
+          onButtonClick={this.offerDownload}
+          show={this.state.showSaveDialog}
+          onHide={this.hideModal} />
       </div>
     );
   }

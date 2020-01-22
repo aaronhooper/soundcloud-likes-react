@@ -4,10 +4,13 @@ import {
   Button,
 } from 'react-bootstrap';
 
-function SaveButton() {
+function SaveButton(props) {
   return (
     <div>
-      <Button variant="primary">
+      <Button
+        variant="primary"
+        onClick={props.onClick}
+      >
         Save Changes
       </Button>
     </div>

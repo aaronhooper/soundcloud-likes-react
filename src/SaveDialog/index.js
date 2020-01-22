@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import {
   Modal,
@@ -9,20 +9,11 @@ import {
 import FileTypeSelector from './FileTypeSelector';
 import SaveButton from './SaveButton';
 
-function SaveDialog() {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+function SaveDialog(props) {
   return (
     <Container>
 
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
-
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={props.show} onHide={props.onHide}>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
@@ -30,10 +21,12 @@ function SaveDialog() {
           <FileTypeSelector />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={props.onHide}>
             Close
           </Button>
-          <SaveButton />
+          <SaveButton
+            onClick={props.onButtonClick}
+          />
         </Modal.Footer>
       </Modal>
     </Container>
