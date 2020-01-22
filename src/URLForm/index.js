@@ -1,6 +1,7 @@
 import React from 'react';
 import SoundCloud from '../soundcloud';
 import ky from 'ky';
+import fileDownload from 'js-file-download';
 
 import {
   Container,
@@ -28,9 +29,14 @@ class URLForm extends React.Component {
     this.setState({ data });
   }
 
+  async getDataAndShowModal() {
+    await this.getData();
+    fileDownload(JSON.stringify(this.state.data), 'likes.json');
+  }
+
   handleKeyPress = e => {
     if (e.key === 'Enter') {
-      this.getData();
+      return this.getDataAndShowModal();
     }
   }
 
@@ -39,7 +45,9 @@ class URLForm extends React.Component {
   }
 
   handleClick = e => {
-    this.getData();
+    return this.getDataAndShowModal();
+    // download button should trigger:
+    // fileDownload(JSON.stringify(this.state.data), 'likes.json');
   }
 
   render() {
