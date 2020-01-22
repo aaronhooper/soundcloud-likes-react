@@ -1,4 +1,6 @@
 import React from 'react';
+import SoundCloud from '../soundcloud';
+import ky from 'ky';
 
 import {
   Container,
@@ -14,12 +16,21 @@ class URLForm extends React.Component {
     super(props);
     this.state = {
       text: "",
+      data: null,
     };
+  }
+
+  async getData() {
+    const sc = new SoundCloud(ky);
+    const profileUrl = await sc.resolve(this.state.text);
+    const data = await sc.getAllFavorites(profileUrl);
+
+    this.setState({ data });
   }
 
   handleKeyPress = e => {
     if (e.key === 'Enter') {
-      console.log('Enter key pressed');
+      this.getData();
     }
   }
 
@@ -28,7 +39,7 @@ class URLForm extends React.Component {
   }
 
   handleClick = e => {
-    console.log('Download button clicked');
+    this.getData();
   }
 
   render() {
