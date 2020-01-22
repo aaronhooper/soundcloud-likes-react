@@ -1,7 +1,4 @@
 import React from 'react';
-import SoundCloud from '../soundcloud';
-import ky from 'ky';
-import fileDownload from 'js-file-download';
 
 import {
   Container,
@@ -15,39 +12,6 @@ import DownloadButton from './DownloadButton';
 class URLForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      text: "",
-      data: null,
-    };
-  }
-
-  async getData() {
-    const sc = new SoundCloud(ky);
-    const profileUrl = await sc.resolve(this.state.text);
-    const data = await sc.getAllFavorites(profileUrl);
-
-    this.setState({ data });
-  }
-
-  async getDataAndShowModal() {
-    await this.getData();
-    fileDownload(JSON.stringify(this.state.data), 'likes.json');
-  }
-
-  handleKeyPress = e => {
-    if (e.key === 'Enter') {
-      return this.getDataAndShowModal();
-    }
-  }
-
-  handleChange = e => {
-    this.setState({ text: e.target.value });
-  }
-
-  handleClick = e => {
-    return this.getDataAndShowModal();
-    // download button should trigger:
-    // fileDownload(JSON.stringify(this.state.data), 'likes.json');
   }
 
   render() {
@@ -56,11 +20,11 @@ class URLForm extends React.Component {
         <Row>
           <Col md="6" className="mx-auto">
             <URLTextBox
-              text={this.state.text}
-              onKeyPress={this.handleKeyPress}
-              onChange={this.handleChange} />
+              text={this.props.text}
+              onKeyPress={this.props.onKeyPress}
+              onChange={this.props.onChange} />
             <DownloadButton
-              onClick={this.handleClick} />
+              onClick={this.props.onButtonClick} />
           </Col>
         </Row>
       </Container>
