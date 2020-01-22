@@ -17,9 +17,6 @@ function SaveDialog(props) {
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <FileTypeSelector />
-        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={props.onHide}>
             Close
